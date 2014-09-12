@@ -118,6 +118,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " Bundle 'UltiSnips'
 " Bundle 'snipMate'
 Bundle 'waldonchen/xptemplate'
+let g:xptemplate_vars = "$author='CHEN Junshi'&$email=waldonchen@gmail.com"
 
 " Bundle 'cmaureir/snipmate-snippets-cuda'
 au BufNewFile,BufRead *.cu set ft=cu
