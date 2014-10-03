@@ -5,8 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# agnoster, af-magic, amuse, avit, bira
-ZSH_THEME="amuse"
+# agnoster, af-magic, amuse, avit, bira, adben
+ZSH_THEME="adben"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -96,6 +96,7 @@ alias du='du -h'
 alias vi='vim'
 alias grep='grep --color=auto'
 alias 7zip='7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on'
+alias diff='diff -Nur'
 alias -s html=vi
 alias -s lisp=vi
 alias -s js=vi
@@ -118,4 +119,6 @@ export PIN_ROOT=/home/waldon/app/pin
 
 export SDCV_PAGER=less
 
-export PATH=$PIN_ROOT:$PATH
+source $HOME/.rvm/scripts/rvm
+
+export PATH="$PIN_ROOT:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -187,7 +187,11 @@ set tags+=~/.vim/tags/cpp.tags
 set tags+=~/.vim/tags/c.tags
 " }
 
-source ~/.vim/bundle.vim
+if has('unix')
+    source ~/.vim/bundle.vim
+elseif has('win32') || has('win16')
+    source $VIMRUNTIME/../vimfiles/bundle.vim
+endif
 
 filetype plugin indent on " required!
 syntax on
@@ -201,7 +205,11 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " When .vimrc is modified, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+if has('unix')
+    autocmd! bufwritepost .vimrc source ~/.vimrc
+elseif has('win32') || has('win16')
+    autocmd! bufwritepost .vimrc source $VIMRUNTIME/../_vimrc
+endif
 
 "===============================
 " Custom
@@ -218,14 +226,14 @@ func! DeleteTrailingWS()
 	silent! %s/\s\+$//ge
 	call cursor(cur_line, cur_col)
 endfunc
-nmap <silent> ;m :call DeleteTrailingWS()<CR>
-autocmd BufWrite *.py :call DeleteTrailingWS()
+" nmap <silent> ;m :call DeleteTrailingWS()<CR>
+" autocmd BufWrite *.py :call DeleteTrailingWS()
 
 " Replace the selected text in visual mode
 vnoremap <leader>s y:%s/<C-R>=escape(@", '\\/.*$^~[]')<CR>/
 
 " 查词典
-nmap <leader>f :!sdcv -n <C-R>=expand("<cword>")<CR>\|less<CR>
+" nmap <leader>f :!sdcv -n <C-R>=expand("<cword>")<CR>\|less<CR>
 " presentations of '|' character: <Bar>, \|, ^V|
 
 function! ToggleSyntax()
@@ -259,3 +267,16 @@ highlight ColorColumn ctermbg=235 guibg=lightgrey
 "[I     ; shwo lines matching work under cursor
 "g/xxx/#    ; search and display with line numbers
 ":g/<pattern>/z#.5|echo "=========="  : display beautifully
+
+" Window
+" <c-w>=
+" <c-w>-
+" <c-w>|
+" <c-w>h/j/k/l
+
+" Buffer
+" :ls       list buffer in VIM
+" :b <num>  goto buffer <num>
+" :bn/p     next/previous buffer
+" :b#       last buffer
+" :bd <num> delete buffer <num>
