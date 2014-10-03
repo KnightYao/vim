@@ -288,3 +288,24 @@ highlight ColorColumn ctermbg=235 guibg=lightgrey
 " :bn/p     next/previous buffer
 " :b#       last buffer
 " :bd <num> delete buffer <num>
+
+" 查看当前编辑的C/C++源文件所有include文件路径
+" :checkpath
+
+" 如何利用宏命令,生成数字顺序列表
+" qa -> Y -> p -> <c-a> -> q -> @a
+
+" 折叠
+" zf            Flod
+" zo, zc        Open/Close
+" zM, zR        Close/Open all fold
+" za            Folding open or close
+
+" Search current word
+" */#
+
+" vim中paste剪贴板中的数据如何让它不缩进,保持原格式
+" :set paste
+
+" 加密保存
+" :X
