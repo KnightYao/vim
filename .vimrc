@@ -32,10 +32,10 @@ set wildmenu
 set wildignore=*.o,*~,*.pyc
 
 " Always show current position on right-bottom
-set ruler
+" set ruler
 
 " Height of the command bar
-set cmdheight=1
+" set cmdheight=1
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -78,7 +78,7 @@ set laststatus=2
 " }
 
 "===========================================
-" Colors and Fonts
+" Colors, Encoding and Fonts
 "===========================================
 " Enable syntax hightlighting
 " syntax enable <== Bundle
@@ -150,16 +150,16 @@ map <C-l> <C-W>l
 " Tab page {
 " useful mappings for managing tabs
 " {count}gt		goto tab page {count}
-map <leader>tn :tabnew<cr>
-map <leader>tnn :tabnew<space>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<space>
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-" goto previous tab
-map <leader>tp :tabp<space>
-" goto next tab
-map <leader>tg :tabn<space>
+" map <leader>tn :tabnew<cr>
+" map <leader>tnn :tabnew<space>
+" map <leader>to :tabonly<cr>
+" map <leader>tc :tabclose<cr>
+" map <leader>tm :tabmove<space>
+" map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+" " goto previous tab
+" map <leader>tp :tabp<space>
+" " goto next tab
+" map <leader>tg :tabn<space>
 "}
 
 " Switch CWD to the directory of the open buffer
@@ -221,12 +221,19 @@ augroup end
 
 " Delete trailing white space on save
 func! DeleteTrailingWS()
-	let cur_line = line('.')
-	let cur_col = col('.')
+    " Save the current search and cursor position
+    let _s = @/
+	let l = line('.')
+	let c = col('.')
+
+    " Strip the whitespace
 	silent! %s/\s\+$//ge
-	call cursor(cur_line, cur_col)
+
+    " Restore the saved search and cursor position
+    let @/ = _s
+	call cursor(l, c)
 endfunc
-" nmap <silent> ;m :call DeleteTrailingWS()<CR>
+nmap <silent> ;m :call DeleteTrailingWS()<CR>
 " autocmd BufWrite *.py :call DeleteTrailingWS()
 
 " Replace the selected text in visual mode
@@ -268,11 +275,12 @@ highlight ColorColumn ctermbg=235 guibg=lightgrey
 "g/xxx/#    ; search and display with line numbers
 ":g/<pattern>/z#.5|echo "=========="  : display beautifully
 
-" Window
+" Split Window
 " <c-w>=
 " <c-w>-
 " <c-w>|
-" <c-w>h/j/k/l
+" <c-w>h/j/k/l      Activate left/down/up/right window
+" <c-w>H/J/K/L      Move window to left/down/up/right
 
 " Buffer
 " :ls       list buffer in VIM

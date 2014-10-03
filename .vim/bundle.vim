@@ -1,16 +1,16 @@
 "===========================================
-" Bundle
+" Plugin
 "===========================================
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused
 " bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
 
 "Vundle setting {
 filetype off
@@ -20,17 +20,17 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 "--------------------------------------------------
 " General
 "--------------------------------------------------
 " vim zh-cn help
-" Bundle \"vimcdoc"
+" Plugin \"vimcdoc"
 " set helplang=cn
 
 " File search Ctrl+p
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 noremap <C-w><C-u> :CtrlPMRU<CR>
 noremap <C-w>u :CtrlMRU<CR>
 let g:ctrlp_custom_ignore         = '\.git$\|\.hg$\|\.svn$\|.rvm$'
@@ -43,39 +43,41 @@ let g:ctrlp_follow_symlinks       = 1
 
 " 以全新的方式在文档中更高效地移动光标
 " <Leader>w/b/j/k
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = ','
 
 " 显示行末的空格
 " ;m
-" Bundle 'ShowTrailingWhitespace'
-Bundle 'ntpeters/vim-better-whitespace'
-" let g:better_whitespace_filetypes_blacklist=['<filetype1>', '<etc>']
-nmap <silent> ;m :StripWhitespace<CR>
+Plugin 'ShowTrailingWhitespace'
 
 " 让代码更加易于纵向排版，以=或,符号对齐
 " :Tab /=    or :Tab /, ...
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 
 " \ec 开始拼写检查
 " \ee 结束拼写检查
 " \ea 选择替换拼写
 " \en[p] move to next[previous] spell error
 " \
-" Bundle 'Engspchk'
+" Plugin 'Engspchk'
 
-Bundle 'Lokaltog/vim-powerline'
+let laststatus=2
+Plugin 'Lokaltog/vim-powerline'
 " let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
 
-" Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Yggdroot/indentLine'
+" Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
+
+Plugin 'sjl/gundo.vim'
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_playback_delay=800
 
 "--------------------------------------------------
 " Programming
 "--------------------------------------------------
 " 自动补全插件
-Bundle 'OmniCppComplete'
+Plugin 'OmniCppComplete'
 set completeopt+=longest,menu,menuone
 let OmniCpp_MayCompleteScope         = 1
 let OmniCpp_SelectFirstItem          = 2
@@ -89,8 +91,8 @@ let OmniCpp_DefaultNamespace = ["std","_GLIBCXX_STD"]
 "	\--fields                        = +iaSKz --extra         = +q .<CR>
 " map <C-F12>	:!ctagsx<cR>
 
-Bundle 'AutoComplPop'
-Bundle 'L9'
+Plugin 'AutoComplPop'
+Plugin 'L9'
 let g:acp_completeoptPreview=1
 " 自动关闭预览窗口
 " Close automatically the preview window after a completion.
@@ -102,8 +104,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " 在vim的编辑窗口树状显示文件目录
 " :NERDTree
 " :h NERDTree
-" Bundle 'The-NERD-tree'
-Bundle 'scrooloose/nerdtree'
+" Plugin 'The-NERD-tree'
+Plugin 'scrooloose/nerdtree'
 let g:NERDTreeQuitOnOpen = 1
 nmap wm :NERDTree<CR>
 
@@ -111,17 +113,17 @@ nmap wm :NERDTree<CR>
 " n\cu  为光标以下n行取消注释
 " n\cm  为光标以下n行添加块注释
 " :h NERDCommenter
-" Bundle 'The-NERD-Commenter'
-Bundle 'scrooloose/nerdcommenter'
+" Plugin 'The-NERD-Commenter'
+Plugin 'scrooloose/nerdcommenter'
 let NERDSpaceDelims = 1
 
 " fancier than taglist
-Bundle 'Tagbar'
+Plugin 'Tagbar'
 let g:tagbar_autoclose	= 1
 let g:tagbar_compact	= 1
 map <silent> tl :TagbarToggle<CR>
 
-Bundle 'wesleyche/SrcExpl'
+Plugin 'wesleyche/SrcExpl'
 nmap <silent> sp :SrcExplToggle<CR>
 let g:SrcExpl_winHeight   = 8
 let g:SrcExpl_refreshTime = 200
@@ -140,7 +142,7 @@ let g:SrcExpl_prevDefKey     = "<F3>"
 let g:SrcExpl_nextDefKey     = "<F4>"
 
 " Autocompletion library for python
-Bundle 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command    = "K"
@@ -152,28 +154,28 @@ let g:jedi#popup_on_dot             = 0
 let g:jedi#popup_select_first       = 0
 
 " Syntax Check for python
-Bundle 'orenhe/pylint.vim'
+Plugin 'orenhe/pylint.vim'
 
-Bundle 'SWIG-syntax'
+Plugin 'SWIG-syntax'
 au BufNewFile,BufRead *.i	set filetype=swig
 au BufNewFile,BufRead *.swg	set filetype=swig
 
 " Syntax check
-Bundle 'Syntastic'
+Plugin 'Syntastic'
 let g:syntastic_ignore_files = [".*\.py$"]
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 " 简单配置就可以按照自己的风格快速输入大段代码
-" Bundle 'UltiSnips'
-" Bundle 'snipMate'
-Bundle 'waldonchen/xptemplate'
+" Plugin 'UltiSnips'
+" Plugin 'snipMate'
+Plugin 'waldonchen/xptemplate'
 let g:xptemplate_vars = "$author='CHEN Junshi'&$email=waldonchen@gmail.com"
 
-" Bundle 'cmaureir/snipmate-snippets-cuda'
+" Plugin 'cmaureir/snipmate-snippets-cuda'
 au BufNewFile,BufRead *.cu set ft=cu
 
-Bundle 'vim-scripts/slimv.vim'
+Plugin 'vim-scripts/slimv.vim'
 let g:slimv_python = 'python2'
 let g:slimv_impl = 'sbcl'
 if has("unix")
@@ -186,18 +188,18 @@ endif
 
 " JS代码格式化插件
 " <leader>ff
-Bundle 'vim-scripts/jsbeautify'
+Plugin 'vim-scripts/jsbeautify'
 autocmd FileType javascript noremap <buffer>  <c-f> :call Jsbeautify()<cr>
 
-Bundle 'othree/xml.vim'
+Plugin 'othree/xml.vim'
 
 " cs"'  ; Change surrounding from " to '
 " cst"  ; Change surrounding To "
 " ds"   ; Delete surrounding "
 " ysiw] ; iw: current word   ] nospace [ w/ space
 " yssb  ; entire line
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 " <C-Y>,
 " <C-Y>/    comment
@@ -211,22 +213,22 @@ Bundle 'tpope/vim-repeat'
 " E^N           代表N是E的上级元素。
 " E*N           代表元素E重写N次
 " E$*N          代表字符串E自动编号至N, $的个数表示编号位数
-Bundle 'mattn/emmet-vim'
+Plugin 'mattn/emmet-vim'
 
 " :PandocHtml
 " :PandocHtmlOpen
-Bundle 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc'
 let g:snips_author = "Chen Junshi"
 let maplocalleader = ","
 
 " Dox DoxLic DoxAuthor DoxUndoc DoxBlock
-Bundle 'DoxygenToolkit.vim'
+Plugin 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_authorName = "Chen Junshi"
 let g:DoxygenToolkit_licenseTag = "Copyright (C) \<enter>\<enter>".
 			\"2013 - Chen Junshi\<enter>".
 			\"This program belongs to ACSA of USTC."
 let g:DoxygenToolkit_briefTag_pre = ""
-" Bundle 'Doxygen-Syntax.vim'
+" Plugin 'Doxygen-Syntax.vim'
 " let g:load_doxygen_syntax      = 1
 " let g:doxygen_enhanced_color = 1
 " let doxygen_my_rendering       = 1
@@ -234,22 +236,22 @@ let g:DoxygenToolkit_briefTag_pre = ""
 " let doxygenLinkError           = 1
 " let python_highlight_all       = 1
 
-Bundle 'mattn/calendar-vim'
+Plugin 'mattn/calendar-vim'
 let g:calendar_mark = 'right'
 let g:calendar_focus_today = 1
 
 " :Matrix
-Bundle 'waldonchen/matrix.vim'
+Plugin 'waldonchen/matrix.vim'
 
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " 快速浏览和操作buffer
-" Bundle 'fholgado/minibufexpl.vim'
+" Plugin 'fholgado/minibufexpl.vim'
 " let g:miniBufExplMapCTabSwitchBufs  = 1
 " let g:miniBufExplMapWindowNavVim    = 1	"可以用<C-­h,j,k,l>切换到上下左右的窗口中
 " let g:miniBufExplMapWindowNavArrows = 1	"可以用<C­箭头键>切换到上下左右窗口中去
 
-"Bundle 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
 "let g:multi_cursor_next_key='<C-m>'
 "let g:multi_cursor_prev_key='<C-m>'
 "let g:multi_cursor_skip_key='<C-x>'
