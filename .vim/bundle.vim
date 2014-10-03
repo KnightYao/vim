@@ -1,5 +1,5 @@
 "===========================================
-" Plugin
+" Bundles
 "===========================================
 "
 " Brief help
@@ -7,7 +7,6 @@
 " :PluginInstall(!)    - install(update) bundles
 " :PluginSearch(!) foo - search(or refresh cache first) for foo
 " :PluginClean(!)      - confirm(or auto-approve) removal of unused
-" bundles
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
@@ -72,6 +71,9 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_playback_delay=800
+
+" Fullscreen -> <F5>
+Plugin 'junegunn/goyo.vim'
 
 "--------------------------------------------------
 " Programming
