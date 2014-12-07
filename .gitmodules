@@ -57,10 +57,10 @@
 	url = https://github.com/vim-scripts/Syntastic
 [submodule ".vim/bundle/xptemplate"]
 	path = .vim/bundle/xptemplate
-	url = https://github.com/waldonchen/xptemplate
-[submodule ".vim/bundle/slimv.vim"]
-	path = .vim/bundle/slimv.vim
-	url = https://github.com/vim-scripts/slimv.vim
+	url = https://github.com/drmingdrmer/xptemplate
+[submodule ".vim/bundle/slimv"]
+	path = .vim/bundle/slimv
+	url = http://github.com/kovisoft/slimv
 [submodule ".vim/bundle/jsbeautiful"]
 	path = .vim/bundle/jsbeautiful
 	url = https://github.com/vim-scripts/jsbeautify

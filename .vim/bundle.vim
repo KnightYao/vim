@@ -43,15 +43,27 @@ let g:ctrlp_follow_symlinks       = 1
 " 以全新的方式在文档中更高效地移动光标
 " <Leader>w/b/j/k
 Plugin 'Lokaltog/vim-easymotion'
-let g:EasyMotion_leader_key = ','
+map <Leader> <Plug>(easymotion-prefix)
+"let g:EasyMotion_leader_key = ';'
 
 " 显示行末的空格
 " ;m
 Plugin 'ShowTrailingWhitespace'
 
 " 让代码更加易于纵向排版，以=或,符号对齐
-" :Tab /=    or :Tab /, ...
+" :Tab /=    :Tab /,    :Tab /:\zs
 Plugin 'godlygeek/tabular'
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
 
 " \ec 开始拼写检查
 " \ee 结束拼写检查
@@ -72,7 +84,6 @@ Plugin 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_playback_delay=800
 
-" Fullscreen -> <F5>
 Plugin 'junegunn/goyo.vim'
 
 "--------------------------------------------------
@@ -100,8 +111,21 @@ let g:acp_completeoptPreview=1
 " Close automatically the preview window after a completion.
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-" " 回车即寻中当前项
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" 回车即寻中当前项
+" inoremap <expr> <CR> pumvisible() ? \"\<C-y>" : \"\<CR>"
+
+" Plugin 'Valloric/YouCompleteMe'
+" nmap <F4> :YcmDiags<CR>
+" let g:ycm_error_symbol = '>>'
+" let g:ycm_warning_symbol = '>*'
+" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" " let g:ycm_confirm_extra_conf = 1
+" let g:ycm_extra_conf_globlist = ['~/*'] " ['!~/*']
+
 
 " 在vim的编辑窗口树状显示文件目录
 " :NERDTree
@@ -158,6 +182,8 @@ let g:jedi#popup_select_first       = 0
 " Syntax Check for python
 Plugin 'orenhe/pylint.vim'
 
+Plugin 'waldonchen/vala.vim'
+
 Plugin 'SWIG-syntax'
 au BufNewFile,BufRead *.i	set filetype=swig
 au BufNewFile,BufRead *.swg	set filetype=swig
@@ -171,13 +197,15 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " 简单配置就可以按照自己的风格快速输入大段代码
 " Plugin 'UltiSnips'
 " Plugin 'snipMate'
-Plugin 'waldonchen/xptemplate'
-let g:xptemplate_vars = "$author='CHEN Junshi'&$email=waldonchen@gmail.com"
+Plugin 'drmingdrmer/xptemplate'
+" let g:xptemplate_vars = \"$author='CHEN Junshi'&$email=waldonchen@gmail.com"
 
 " Plugin 'cmaureir/snipmate-snippets-cuda'
 au BufNewFile,BufRead *.cu set ft=cu
 
-Plugin 'vim-scripts/slimv.vim'
+" Plugin 'vim-scripts/slimv.vim'
+Plugin 'kovisoft/slimv'
+let g:slimv_leader = ';'
 let g:slimv_python = 'python2'
 let g:slimv_impl = 'sbcl'
 if has("unix")
@@ -200,6 +228,7 @@ Plugin 'othree/xml.vim'
 " ds"   ; Delete surrounding "
 " ysiw] ; iw: current word   ] nospace [ w/ space
 " yssb  ; entire line
+" vbgS
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
@@ -220,6 +249,7 @@ Plugin 'mattn/emmet-vim'
 " :PandocHtml
 " :PandocHtmlOpen
 Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 let g:snips_author = "Chen Junshi"
 let maplocalleader = ","
 

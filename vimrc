@@ -124,6 +124,9 @@ set cindent
 " set wrap
 " }
 
+" Use <F3> to toggle between paste mode
+set pastetoggle=<F3>
+
 " Folding settings {
 set foldmethod=syntax
 set foldlevel=90
@@ -309,3 +312,18 @@ highlight ColorColumn ctermbg=235 guibg=lightgrey
 
 " 加密保存
 " :X
+
+" 请求root权限写入文件
+" :w !sudo tee %
+
+" 剪贴板
+" <c-;>
+
+" 将shell命令的结果插入到当前行的下一行
+" :r !command
+" e.g.   :r !date +%Y.%2m.%2d
+
+" :62,72 !sort  将62到72行内容排序
+" :62 !tr [a-z] [A-Z]，将62行的小写字母转为大写字母
+" :. w !bash，将当前行的内容作为bash命令来执行
+
