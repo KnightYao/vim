@@ -26,7 +26,7 @@ endfunction
 "XPT yoursnippet " tips here
 
 XPT main hint=main\ (argc,\ argv)
-int`c_fun_body_indent()^main(`$SParg^int argc,`$SPop^char **argv`$SParg^)`$BRfun^{
+int main(`$SParg^int argc,`$SPop^char **argv`$SParg^)`$BRfun^{
     `cursor^
     return 0;
 }
