@@ -248,10 +248,12 @@ Plugin 'mattn/emmet-vim'
 
 " :PandocHtml
 " :PandocHtmlOpen
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-let g:snips_author = "Chen Junshi"
-let maplocalleader = ","
+if v:version > 704
+    Plugin 'vim-pandoc/vim-pandoc'
+    Plugin 'vim-pandoc/vim-pandoc-syntax'
+    let g:snips_author = "Chen Junshi"
+    let maplocalleader = ","
+endif
 
 " Dox DoxLic DoxAuthor DoxUndoc DoxBlock
 Plugin 'DoxygenToolkit.vim'
