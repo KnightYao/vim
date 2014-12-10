@@ -219,7 +219,8 @@ endif
 "===============================
 " Google protobuf
 augroup filetype
-  au! BufRead,BufNewFile *.proto setfiletype proto
+    au! VimEnter,BufRead,BufNewFile *.proto setfiletype proto
+    au! VimEnter,BufRead,BufNewFile *.cu setfiletype cuda
 augroup end
 
 " Delete trailing white space on save

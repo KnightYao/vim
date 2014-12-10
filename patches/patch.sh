@@ -37,4 +37,5 @@ check_project_root_dir
 XPTEMPLATE_DIR=$VIM_GIT_HOME_DIR/.vim/bundle/xptemplate/
 if_dir_exist_then_go_on $XPTEMPLATE_DIR
 (cd $XPTEMPLATE_DIR \
-    && patch -p1 < $PATCHES_DIR/xptemplate_personal_xpt_conf.patch)
+    && patch -p1 < $PATCHES_DIR/xptemplate_personal_xpt_conf.patch \
+    && patch -p1 < $PATCHES_DIR/xptemplate_cuda.patch)
