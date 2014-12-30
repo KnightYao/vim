@@ -13,8 +13,11 @@
 
 "Vundle setting {
 filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim/
+if has('unix')
+    set rtp+=~/.vim/bundle/Vundle.vim/
+elseif has('win32') || has('win16')
+    set rtp+=$VIMRUNTIME/.../vimfiles/bundle/Vundle.vim/
+endif
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -168,16 +171,16 @@ let g:SrcExpl_prevDefKey     = "<F3>"
 let g:SrcExpl_nextDefKey     = "<F4>"
 
 " Autocompletion library for python
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command    = "K"
-let g:jedi#usages_command           = "<leader>n"
-let g:jedi#completions_command      = "<C-Space>"
-let g:jedi#rename_command           = "<leader>r"
-let g:jedi#show_call_signatures     = "1"
-let g:jedi#popup_on_dot             = 0
-let g:jedi#popup_select_first       = 0
+" Plugin 'davidhalter/jedi-vim'
+" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_definitions_command = "<leader>d"
+" let g:jedi#documentation_command    = "K"
+" let g:jedi#usages_command           = "<leader>n"
+" let g:jedi#completions_command      = "<C-Space>"
+" let g:jedi#rename_command           = "<leader>r"
+" let g:jedi#show_call_signatures     = "1"
+" let g:jedi#popup_on_dot             = 0
+" let g:jedi#popup_select_first       = 0
 
 " Syntax Check for python
 Plugin 'orenhe/pylint.vim'
@@ -209,7 +212,7 @@ let g:slimv_leader = ';'
 let g:slimv_python = 'python2'
 let g:slimv_impl = 'sbcl'
 if has("unix")
-    let g:slimv_swank_cmd = "! xterm -e sbcl --load ~/.vim/bundle/slimv.vim/slime/start-swank.lisp &"
+    let g:slimv_swank_cmd = "! xterm -e sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp &"
     let g:slimv_clhs_root = "file:///usr/local/lib/LispWorksPersonal/lib/6-1-0-0/manual/online/CLHS/Body/"
 elseif has("win32") || has("win16")
     let g:slimv_swank_cmd = '!start "D:\Program Files (x86)\Steel Bank Common Lisp\1.2.1\sbcl.exe"
