@@ -191,9 +191,9 @@ set tags+=~/.vim/tags/c.tags
 " }
 
 if has('unix')
-    source ~/.vim/bundle.vim
+    source ~/.vim/plugins.vim
 elseif has('win32') || has('win16')
-    source $VIMRUNTIME/../vimfiles/bundle.vim
+    source $VIMRUNTIME/../vimfiles/plugins.vim
 endif
 
 filetype plugin indent on " required!
