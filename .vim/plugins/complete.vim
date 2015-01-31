@@ -23,6 +23,8 @@ let OmniCpp_DefaultNamespace = ["std","_GLIBCXX_STD"]
 " 自动弹出补全
 "-----------------------------------------
 Plugin 'AutoComplPop'
+autocmd FileType xhtml set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 Plugin 'L9'
 let g:acp_completeoptPreview=1
 " 自动关闭预览窗口

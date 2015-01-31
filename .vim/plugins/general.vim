@@ -109,9 +109,7 @@ let g:DoxygenToolkit_licenseTag = "Copyright " . strftime("%Y") . " Junshi Chen\
 	\ . "See the License for the specific language governing permissions and\<enter>"
 	\ . "limitations under the License."
 
-let g:DoxygenToolkit_briefTag_pre = "@brief"
-let g:DoxygenToolkit_briefTag_post = "<++>"
-let g:DoxygenToolkit_briefTag_funcName = "yes"
+let g:DoxygenToolkit_briefTag_pre = "@brief "
 
 Plugin 'Doxygen-Syntax.vim'
 let g:load_doxygen_syntax      = 1

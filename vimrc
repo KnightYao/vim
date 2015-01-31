@@ -109,8 +109,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-autocmd FileType makefile,html,python set noexpandtab
-autocmd FileType ruby set ts=2 | set sw=2 | set sts=2
+autocmd FileType makefile,html,xml,python set noexpandtab
+autocmd FileType ruby,html,xml,xhtml set ts=2 | set sw=2 | set sts=2
 " }
 
 " Line break on xx characters
@@ -188,6 +188,7 @@ endtry
 set tags=tags;
 set tags+=~/.vim/tags/cpp.tags
 set tags+=~/.vim/tags/c.tags
+set tags+=~/.vim/tags/gtk.tags
 " }
 
 if has('unix')
